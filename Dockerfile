@@ -7,6 +7,7 @@ RUN mkdir /srv/calibre
 RUN groupadd -r calibre
 RUN useradd  --home /srv/calibre -g calibre -r calibre
 RUN chown calibre:calibre /srv/calibre
+RUN chmod 700 /srv/calibre
 
 COPY scripts/calibre-server.sh /usr/local/bin/calibre-server.sh
 ADD files/library /usr/local/share/calibre/library
