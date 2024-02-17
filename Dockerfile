@@ -13,7 +13,7 @@ RUN chmod a+x /usr/local/bin/calibre-server.sh
 USER calibre /usr/local/bin/calibre-server.sh
 
 # define entrypoint
-ENTRYPOINT ["/usr/local/bin/calibre-server.sh"]
+ENTRYPOINT /usr/local/bin/calibre-server.sh
 
 # run sleep infinity
 CMD [ "/usr/bin/sleep", "infinity" ]
