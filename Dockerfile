@@ -10,7 +10,7 @@ RUN useradd -g calibre -r calibre
 COPY calibre-server.sh /usr/local/bin/calibre-server.sh
 RUN chmod a+x /usr/local/bin/calibre-server.sh
 
-USER calibre /usr/local/bin/calibre-server.sh
+USER calibre
 
 # define entrypoint
 ENTRYPOINT /usr/local/bin/calibre-server.sh
