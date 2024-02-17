@@ -1,10 +1,19 @@
-FROM debian
+FROM debian:stable-slim
 
 RUN apt-get update && apt-get install -y calibre 
 
 RUN mkdir /srv/calibre
 
 RUN groupadd -r calibre
-RUN useradd -r calibre
+RUN useradd -g calibre -r calibre
 
-COPY calibre-server.service /etc/systemd/system/calibre-server.service
+COPY calibre-server.sh /usr/local/bin/calibre-server.sh
+RUN chmod a+x 
+
+USER calibre /usr/local/bin/calibre-server.sh
+
+# define entrypoint
+ENTRYPOINT ["/usr/local/bin/calibre-server.sh"]
+
+# run sleep infinity
+CMD [ "/usr/bin/sleep", "infinity" ]
