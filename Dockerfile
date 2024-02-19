@@ -23,3 +23,4 @@ ENTRYPOINT /usr/local/bin/calibre-server.sh
 CMD [ "/usr/bin/sleep", "infinity" ]
 
 ARG CALIBRE_LIBRARY_PATH="/srv/calibre/library"
+ARG CALIBRE_OPTIONS=""
