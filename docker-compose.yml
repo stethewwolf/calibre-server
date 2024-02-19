@@ -3,3 +3,14 @@ version: '3'
 services:
   calibre-server:
     build: .
+    ports:
+      - "8080:8080"     # HTTP port
+    environment:
+      CALIBRE_OPTIONS: "--enable-local-write"
+
+    volumes:
+      - /etc/localtime:/etc/localtime:ro    # Use host timezone
+      - calibre-library:/srv/calibre/library/
+
+volumes:
+  calibre-library:
