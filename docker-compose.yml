@@ -7,9 +7,11 @@ services:
       - "8080:8080"     # HTTP port
     environment:
       CALIBRE_OPTIONS: "--enable-local-write"
+      CALIBRE_NEW_BOOKS_PATH: "/srv/calibre/new"
 
     volumes:
       - /etc/localtime:/etc/localtime:ro    # Use host timezone
+      - /home/stethewwolf/tmp/calibre/new/:/srv/calibre/new/
       - calibre-library:/srv/calibre/library/
 
 volumes:

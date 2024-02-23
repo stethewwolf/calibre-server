@@ -1,6 +1,6 @@
 FROM debian:stable-slim
 
-RUN apt-get update && apt-get install -y calibre xvfb imagemagick
+RUN apt-get update && apt-get install -y calibre imagemagick rsync
 
 RUN mkdir /srv/calibre
 
@@ -24,3 +24,5 @@ CMD [ "/usr/bin/sleep", "infinity" ]
 
 ARG CALIBRE_LIBRARY_PATH="/srv/calibre/library"
 ARG CALIBRE_OPTIONS=""
+ARG CALIBRE_NEW_BOOKS_PATH="/srv/calibre/new"
+ARG CALIBRE_USERDB_PATH=""
