@@ -10,7 +10,7 @@ CALIBRE_OPTIONS=${CALIBRE_OPTIONS:=""}
 export XDG_RUNTIME_DIR="/srv/calibre/"
 
 
-if [ ! -f $CALIBRE_LIBRARY_PATH/metadata.db ]; then
+if [ ! -f "$CALIBRE_LIBRARY_PATH/metadata.db" ]; then
     rm -rf $CALIBRE_LIBRARY_PATH/*
     rsync -av /usr/local/share/calibre/library/ $CALIBRE_LIBRARY_PATH/
 
@@ -20,19 +20,15 @@ fi
 echo "checking library"
 /usr/bin/calibredb check_library  --library-path $CALIBRE_LIBRARY_PATH
 
-if [ -d $CALIBRE_NEW_BOOKS_PATH ]; then
+if [ -d "$CALIBRE_NEW_BOOKS_PATH" ]; then
     echo "importing book on library from $CALIBRE_NEW_BOOKS_PATH"
-    ls $CALIBRE_NEW_BOOKS_PATH/
-    for book in $(ls $CALIBRE_NEW_BOOKS_PATH/); do
-        echo importing "file ${book}"
-        calibredb add ${book} --with-library $CALIBRE_LIBRARY_PATH
-    done
+    find $CALIBRE_NEW_BOOKS_PATH -type f -exec calibredb add {} --with-library $CALIBRE_LIBRARY_PATH \; 
 fi
 
-#if [ -f $CALIBRE_USERDB_PATH ]; then
-#    echo "enableing user auth with db: $CALIBRE_USERDB_PATH"
-#    CALIBRE_OPTIONS="$CALIBRE_OPTIONS --userdb $CALIBRE_USERDB_PATH --enable-auth"
-#fi
+if [ -f "$CALIBRE_USERDB_PATH" ]; then
+    echo "enableing user auth with db: $CALIBRE_USERDB_PATH"
+    CALIBRE_OPTIONS="$CALIBRE_OPTIONS --userdb $CALIBRE_USERDB_PATH --enable-auth"
+fi
 
 echo "starting server with command:"
 echo "calibre-server --port $CALIBRE_PORT --listen-on $CALIBRE_IP --log /srv/calibre/logs/server.log --access-log /srv/calibre/logs/access.log --url-prefix $CALIBRE_URL_PREFIX  $CALIBRE_OPTIONS $CALIBRE_LIBRARY_PATH"
