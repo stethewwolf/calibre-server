@@ -7,14 +7,14 @@ services:
       - "8080:8080"     # HTTP port
     environment:
       CALIBRE_OPTIONS: "--enable-local-write"
-      CALIBRE_NEW_BOOKS_PATH: "/srv/calibre/new"
-      CALIBRE_USERDB_PATH: "/srv/calibre/users.sqlite"
+      #CALIBRE_NEW_BOOKS_PATH: "/srv/calibre/new"
+      #CALIBRE_USERDB_PATH: "/srv/calibre/users.sqlite"
 
     volumes:
       - /etc/localtime:/etc/localtime:ro    # Use host timezone
-      - /srv/tmp/calibre/new/:/srv/calibre/new/
-      - /srv/tmp/calibre/users.sqlite:/srv/calibre/users.sqlite
       - calibre-library:/srv/calibre/library/
+      #- /srv/tmp/calibre/new/:/srv/calibre/new/
+      #- /srv/tmp/calibre/users.sqlite:/srv/calibre/users.sqlite
 
 volumes:
   calibre-library:
