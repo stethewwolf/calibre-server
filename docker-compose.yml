@@ -12,8 +12,8 @@ services:
 
     volumes:
       - /etc/localtime:/etc/localtime:ro    # Use host timezone
-      - /home/stethewwolf/tmp/calibre/new/:/srv/calibre/new/
-      - /home/stethewwolf/tmp/calibre/users.sqlite:/srv/calibre/users.sqlite
+      - /srv/tmp/calibre/new/:/srv/calibre/new/
+      - /srv/tmp/calibre/users.sqlite:/srv/calibre/users.sqlite
       - calibre-library:/srv/calibre/library/
 
 volumes:
