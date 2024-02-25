@@ -33,5 +33,5 @@ fi
 echo "starting server with command:"
 echo "calibre-server --port $CALIBRE_PORT --listen-on $CALIBRE_IP --log /srv/calibre/logs/server.log --access-log /srv/calibre/logs/access.log --url-prefix $CALIBRE_URL_PREFIX  $CALIBRE_OPTIONS $CALIBRE_LIBRARY_PATH"
 
-/usr/bin/calibre-server --port $CALIBRE_PORT --listen-on $CALIBRE_IP --log /srv/calibre/logs/server.log --access-log /srv/calibre/logs/access.log --url-prefix $CALIBRE_URL_PREFIX  $CALIBRE_OPTIONS $CALIBRE_LIBRARY_PATH
+/usr/bin/calibre-server --port $CALIBRE_PORT --listen-on $CALIBRE_IP --log /srv/calibre/logs/server.log --access-log /srv/calibre/log/access.log --url-prefix $CALIBRE_URL_PREFIX  $CALIBRE_OPTIONS $CALIBRE_LIBRARY_PATH
 
