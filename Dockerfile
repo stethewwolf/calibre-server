@@ -1,7 +1,6 @@
 FROM debian:stable-slim
 
-RUN apt-get update && apt-get install -y calibre imagemagick rsync python3-unrardll unrar
-
+RUN apt-get update && apt-get install -y calibre imagemagick rsync
 RUN mkdir /srv/calibre
 RUN mkdir /srv/calibre/log
 
